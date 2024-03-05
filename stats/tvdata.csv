@@ -1,0 +1,20 @@
+name,home,away,statisticsType,period
+Corner kicks,15,2,positive,ALL
+Offsides,0,1,negative,ALL
+Fouls,5,10,negative,ALL
+Yellow cards,0,1,negative,ALL
+Free kicks,10,5,positive,ALL
+Throw-ins,19,4,positive,ALL
+Goal kicks,3,10,positive,ALL
+Corner kicks,12,2,positive,1st
+Offsides,0,0,negative,1st
+Yellow cards,0,0,negative,1st
+Free kicks,2,2,positive,1st
+Throw-ins,8,3,positive,1st
+Goal kicks,2,8,positive,1st
+Corner kicks,3,0,positive,2nd
+Offsides,0,1,negative,2nd
+Yellow cards,0,1,negative,2nd
+Free kicks,8,3,positive,2nd
+Throw-ins,11,1,positive,2nd
+Goal kicks,1,2,positive,2nd

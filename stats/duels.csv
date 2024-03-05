@@ -1,0 +1,13 @@
+name,home,away,statisticsType,homeTotal,awayTotal,period
+Dribbles,10,6,positive,20.0,8.0,ALL
+Possession lost,125,94,negative,,,ALL
+Duels won,34,40,positive,,,ALL
+Aerials won,9,10,positive,,,ALL
+Dribbles,6,2,positive,13.0,2.0,1st
+Possession lost,77,54,negative,,,1st
+Duels won,16,22,positive,,,1st
+Aerials won,8,6,positive,,,1st
+Dribbles,4,4,positive,7.0,6.0,2nd
+Possession lost,48,40,negative,,,2nd
+Duels won,18,18,positive,,,2nd
+Aerials won,1,4,positive,,,2nd

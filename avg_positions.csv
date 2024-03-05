@@ -1,0 +1,28 @@
+name,position,jerseyNumber,averageX,averageY,pointsCount,type,id,time,incidentClass,reversedPeriodTime,injury,addedTime,subbedIn
+Kyle Walker,D,2,55.837878787879,23.087121212121,132.0,home,,,,,,,False
+Ederson,G,31,13.797916666667,54.8125,48.0,home,,,,,,,False
+Erling Haaland,F,9,77.152631578947,41.010526315789,19.0,home,,,,,,,False
+Julián Álvarez,F,19,69.664705882353,50.605882352941,17.0,home,,,,,,,True
+Nathan Aké,D,6,55.953097345133,77.753982300885,113.0,home,,,,,,,False
+Phil Foden,M,47,76.086153846154,31.136153846154,130.0,home,,,,,,,False
+Rodri,M,16,58.460283687943,46.352482269504,141.0,home,,,,,,,False
+Jérémy Doku,F,11,75.512280701754,85.529824561404,57.0,home,,,,,,,False
+Kevin De Bruyne,M,17,76.259663865546,53.986554621849,119.0,home,,,,,,,False
+Bernardo Silva,M,20,68.691666666667,56.738888888889,108.0,home,,,,,,,False
+Rúben Dias,D,3,46.006034482759,44.185344827586,116.0,home,,,,,,,False
+John Stones,D,5,59.204545454545,52.0125,88.0,home,,,,,,,False
+Jonny Evans,D,35,20.062162162162,69.594594594595,37.0,away,,,,,,,False
+Alejandro Garnacho,M,17,50.541666666667,41.366666666667,36.0,away,,,,,,,False
+Marcus Rashford,M,10,45.6,76.622222222222,27.0,away,,,,,,,False
+Victor Lindelöf,D,2,30.628260869565,78.0,46.0,away,,,,,,,False
+Kobbie Mainoo,M,37,35.770588235294,70.95,34.0,away,,,,,,,False
+Willy Kambwala,D,53,24.16,17.71,10.0,away,,,,,,,True
+Antony,M,21,37.842857142857,18.2,7.0,away,,,,,,,True
+Bruno Fernandes,M,8,49.559090909091,51.434848484848,66.0,away,,,,,,,False
+Sofyan Amrabat,M,4,38.7875,53.9625,8.0,away,,,,,,,True
+Raphaël Varane,D,19,24.178,40.232,50.0,away,,,,,,,False
+Omari Forson,M,62,53.542857142857,85.157142857143,7.0,away,,,,,,,True
+Casemiro,M,18,33.116176470588,42.969117647059,68.0,away,,,,,,,False
+Scott McTominay,M,39,40.625,41.777083333333,48.0,away,,,,,,,False
+André Onana,G,24,10.175641025641,50.480769230769,78.0,away,,,,,,,False
+Diogo Dalot,D,20,33.822666666667,37.485333333333,75.0,away,,,,,,,False
