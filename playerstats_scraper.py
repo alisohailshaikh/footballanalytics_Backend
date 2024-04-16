@@ -55,7 +55,7 @@ class PlayerStats_Finder:
         
         
         try:
-            df.to_csv('player_stats.csv', index=False)
+            df.to_csv('https://khiibaedu-my.sharepoint.com/:x:/g/personal/a_shaikh_22788_khi_iba_edu_pk/EfZ83yWif0FGh1TYGeN8WLMByPBq6-MFY9ChMVhjs9Dg0A?e=CoQ8B5', index=False)
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")

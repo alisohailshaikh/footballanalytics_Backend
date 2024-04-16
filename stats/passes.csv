@@ -1,13 +1,13 @@
 name,home,away,homeTotal,awayTotal,period
-Passes,801,305,,,ALL
-Accurate passes,736 ,240 ,,,ALL
-Long balls,37,14,46.0,33.0,ALL
-Crosses,6,0,37.0,4.0,ALL
-Passes,390,141,,,1st
-Accurate passes,351 ,100 ,,,1st
-Long balls,20,9,24.0,20.0,1st
-Crosses,3,0,22.0,3.0,1st
-Passes,411,164,,,2nd
-Accurate passes,385 ,140 ,,,2nd
-Long balls,17,5,22.0,13.0,2nd
-Crosses,3,0,15.0,1.0,2nd
+Passes,584,530,,,ALL
+Accurate passes,490 ,435 ,,,ALL
+Long balls,33,25,66.0,55.0,ALL
+Crosses,6,2,22.0,11.0,ALL
+Passes,318,275,,,1st
+Accurate passes,271 ,231 ,,,1st
+Long balls,18,17,39.0,28.0,1st
+Crosses,2,2,3.0,8.0,1st
+Passes,266,255,,,2nd
+Accurate passes,219 ,204 ,,,2nd
+Long balls,15,8,27.0,27.0,2nd
+Crosses,4,0,19.0,3.0,2nd

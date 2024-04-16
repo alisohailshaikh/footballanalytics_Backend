@@ -5,15 +5,20 @@ import playerstatsController
 import shotsController
 import avposController
 import statsController
+import userController
+from flask_cors import CORS
+
 
 app = Flask(__name__) 
 api = Api(app) 
+cors = CORS(app)
   
 api.add_resource(matchController.getMatchID, '/matchid') 
 api.add_resource(playerstatsController.PlayerStats, '/playerstats/<matchid>')
 api.add_resource(shotsController.PlayerShots, '/playershots/<matchid>')
 api.add_resource(avposController.PlayerAvgPos, '/avgpos/<matchid>')
 api.add_resource(statsController.Stats, '/stats/<matchid>')
+api.add_resource(userController.Users,'/users')
   
 
 if __name__ == '__main__': 
