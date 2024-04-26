@@ -1,41 +1,21 @@
-name,ID,shirtNumber,position,substitute,type,captain,totalPass,accuratePass,totalLongBalls,accurateLongBalls,savedShotsFromInsideTheBox,saves,minutesPlayed,touches,rating,possessionLostCtrl,goalsPrevented
-Dean Henderson,788134,30,G,False,home,,19.0,13.0,9.0,3.0,4.0,4.0,90.0,25.0,6.3,6.0,-0.8547
-Joel Ward,39183,2,D,False,home,True,23.0,20.0,2.0,1.0,,,90.0,41.0,6.4,5.0,
-Joachim Andersen,362682,16,D,False,home,,37.0,28.0,10.0,4.0,,,90.0,59.0,6.8,11.0,
-Jefferson Lerma,355796,8,D,False,home,,40.0,33.0,9.0,3.0,,,90.0,57.0,6.5,10.0,
-Daniel Muñoz,870360,12,M,False,home,,24.0,14.0,1.0,,,,90.0,45.0,6.7,13.0,
-Adam Wharton,1109771,20,M,False,home,,27.0,23.0,4.0,3.0,,,90.0,33.0,7.1,5.0,
-Will Hughes,193554,19,M,False,home,,19.0,16.0,,,,,82.0,27.0,6.2,5.0,
-Tyrick Mitchell,988275,3,M,False,home,,16.0,7.0,3.0,,,,75.0,25.0,6.3,11.0,
-Eberechi Eze,864921,10,F,False,home,,18.0,14.0,2.0,2.0,,,64.0,28.0,6.6,10.0,
-Jean-Philippe Mateta,848276,14,F,False,home,,9.0,8.0,1.0,1.0,,,74.0,18.0,6.8,7.0,
-Jordan Ayew,103045,9,F,False,home,,13.0,11.0,,,,,74.0,20.0,6.9,2.0,
-Jeffrey Schlupp,148710,15,M,True,home,,3.0,2.0,,,,,26.0,6.0,7.0,2.0,
-Michael Olise,978838,7,M,True,home,,5.0,5.0,1.0,1.0,,,16.0,12.0,6.9,6.0,
-Odsonne Édouard,795228,22,F,True,home,,2.0,2.0,,,,,16.0,7.0,6.9,1.0,
-Nathaniel Clyne,43215,17,D,True,home,,5.0,4.0,1.0,1.0,,,15.0,7.0,6.7,1.0,
-Naouirou Ahamada,997104,29,M,True,home,,4.0,2.0,2.0,1.0,,,8.0,6.0,6.7,2.0,
-Remi Matthews,581610,31,G,True,home,,,,,,,,,,,,
-James Tomkins,32124,5,D,True,home,,,,,,,,,,,,
-David Ozoh,1212155,52,M,True,home,,,,,,,,,,,,
-Franco Umeh,1149851,55,F,True,home,,,,,,,,,,,,
-Stefan Ortega,125274,18,G,False,away,,28.0,24.0,6.0,2.0,1.0,2.0,90.0,37.0,6.6,4.0,-0.5361
-John Stones,152077,5,D,False,away,,112.0,108.0,5.0,2.0,,,90.0,116.0,6.7,5.0,
-Rúben Dias,318941,3,D,False,away,,149.0,141.0,11.0,8.0,,,90.0,154.0,7.2,9.0,
-Joško Gvardiol,964994,24,D,False,away,,64.0,58.0,1.0,,,,45.0,76.0,6.7,7.0,
-Rico Lewis,1136731,82,M,False,away,,58.0,50.0,1.0,,,,90.0,72.0,7.9,11.0,
-Rodri,827606,16,M,False,away,,104.0,97.0,3.0,2.0,,,74.0,118.0,7.5,12.0,
-Oscar Bobb,1065216,52,F,False,away,,41.0,37.0,,,,,90.0,54.0,6.9,11.0,
-Kevin De Bruyne,70996,17,M,False,away,True,74.0,60.0,2.0,2.0,,,89.0,98.0,10.0,26.0,
-Julián Álvarez,944656,19,M,False,away,,30.0,28.0,,,,,74.0,39.0,6.2,3.0,
-Jack Grealish,189061,10,F,False,away,,59.0,56.0,2.0,1.0,,,90.0,73.0,7.4,8.0,
-Erling Haaland,839956,9,F,False,away,,17.0,14.0,,,,,90.0,25.0,7.2,7.0,
-Manuel Akanji,383560,25,D,True,away,,61.0,57.0,2.0,1.0,,,45.0,70.0,6.6,6.0,
-Mateo Kovačić,136710,8,M,True,away,,21.0,18.0,1.0,1.0,,,16.0,26.0,6.7,4.0,
-Matheus Nunes,945122,27,M,True,away,,10.0,7.0,1.0,,,,16.0,15.0,6.9,3.0,
-Bernardo Silva,331209,20,M,True,away,,5.0,5.0,,,,,1.0,6.0,,,
-Ederson,254491,31,G,True,away,,,,,,,,,,,,
-Sergio Gómez,855835,21,M,True,away,,,,,,,,,,,,
-Mahamadou Susoho,1156644,76,M,True,away,,,,,,,,,,,,
-Phil Foden,859765,47,M,True,away,,,,,,,,,,,,
-Jérémy Doku,934386,11,F,True,away,,,,,,,,,,,,
+name,ID,shirtNumber,position,substitute,type,totalPass,accuratePass,totalLongBalls,accurateLongBalls,savedShotsFromInsideTheBox,saves,minutesPlayed,touches,rating,possessionLostCtrl,goalsPrevented,match_id
+Dean Henderson,788134,30,G,False,home,12.0,24.0,6.0,2.0,4.0,6.0,30.0,44.0,5.45,8.0,-0.8881717811248002,11352362
+Joachim Andersen,362682,16,D,True,home,26.0,8.0,6.0,8.0,,,46.0,18.0,6.0,8.0,,11352362
+Jefferson Lerma,355796,8,D,False,home,24.0,22.0,10.0,0.0,,,152.0,94.0,7.64,6.0,,11352362
+Daniel Muñoz,870360,12,M,True,home,34.0,6.0,0.0,,,,52.0,90.0,6.46,10.0,,11352362
+Will Hughes,193554,19,M,False,home,20.0,12.0,,,,,52.0,8.0,4.96,0.0,,11352362
+Tyrick Mitchell,988275,3,M,True,home,6.0,8.0,2.0,,,,96.0,34.0,6.97,8.0,,11352362
+Jeffrey Schlupp,148710,15,M,False,home,0.0,2.0,,,,,46.0,6.0,6.0,0.0,,11352362
+Michael Olise,978838,7,M,True,home,6.0,8.0,0.0,0.0,,,16.0,0.0,6.23,12.0,,11352362
+Odsonne Édouard,795228,22,F,True,home,0.0,0.0,,,,,20.0,12.0,6.71,0.0,,11352362
+Nathaniel Clyne,43215,17,D,False,home,0.0,2.0,0.0,0.0,,,2.0,4.0,7.41,0.0,,11352362
+Stefan Ortega,125274,18,G,True,away,44.0,0.0,6.0,2.0,0.0,2.0,90.0,2.0,6.09,4.0,-0.7198329667679391,11352362
+Rúben Dias,318941,3,D,False,away,172.0,110.0,20.0,0.0,,,84.0,54.0,6.74,14.0,,11352362
+Rodri,827606,16,M,True,away,16.0,180.0,2.0,2.0,,,94.0,192.0,7.58,2.0,,11352362
+Erling Haaland,839956,9,F,False,away,20.0,8.0,,,,,174.0,32.0,6.79,12.0,,11352362
+Manuel Akanji,383560,25,D,False,away,18.0,34.0,2.0,0.0,,,78.0,120.0,5.68,4.0,,11352362
+Mateo Kovačić,136710,8,M,True,away,14.0,10.0,0.0,0.0,,,22.0,6.0,6.48,4.0,,11352362
+Matheus Nunes,945122,27,M,True,away,20.0,8.0,0.0,,,,16.0,30.0,7.07,2.0,,11352362
+Sergio Gómez,855835,21,M,False,away,,,,,,,,,,,,11352362
+Phil Foden,859765,47,M,True,away,,,,,,,,,,,,11352362
+Jérémy Doku,934386,11,F,False,away,,,,,,,,,,,,11352362

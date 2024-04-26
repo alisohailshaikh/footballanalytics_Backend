@@ -2,6 +2,7 @@ import requests
 import datetime
 import pandas as pd
 import math
+from sqlalchemy import create_engine
 
 class Shots_Finder:
     headers= []
@@ -53,8 +54,17 @@ class Shots_Finder:
         df[['EndLocxCoord', 'EndLocyCoord']] = df['EndLocation'].apply(lambda x: pd.Series({'x': x['x'], 'y': x['y']}))
         df.drop('EndLocation', axis=1, inplace=True)
         
+        df['match_id'] = matchid
+        
         try:
-            df.to_csv('shots.csv', index=False)
+            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
+                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
+                    "Database=FootballAnalytics;"
+                    "Trusted_Connection=yes;")
+        
+            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
+
+            df.to_sql(name='shots',con=engine,if_exists='replace')
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")

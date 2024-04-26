@@ -1,6 +1,8 @@
 import requests 
 import datetime
 import pandas as pd
+import pyodbc
+from sqlalchemy import create_engine
 
 class AvgPos_Finder:
     headers = []
@@ -62,8 +64,22 @@ class AvgPos_Finder:
             df= df.dropna(axis=1, how='all')
             df= df[df['type']!='subs']
 
+            df['match_id'] = matchid
+
+            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
+                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
+                    "Database=FootballAnalytics;"
+                    "Trusted_Connection=yes;")
+            cxn = pyodbc.connect(cxnstring)
+            cursor = cxn.cursor()
+
+            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
+
+            df.to_sql(name='avg_positions',con=engine,if_exists='replace')
+
+
             try:
-                df.to_csv('avg_positions.csv', index=False)
+                # df.to_csv('avg_positions.csv', index=False)
                 msg = True
             except Exception as e:
                 print(f"Error occurred while writing to CSV: {e}")

@@ -1,13 +1,13 @@
-name,home,away,statisticsType,homeTotal,awayTotal,period
-Dribbles,7,13,positive,13.0,22.0,ALL
-Possession lost,144,147,negative,,,ALL
-Duels won,49,42,positive,,,ALL
-Aerials won,10,8,positive,,,ALL
-Dribbles,3,10,positive,5.0,16.0,1st
-Possession lost,64,72,negative,,,1st
-Duels won,26,25,positive,,,1st
-Aerials won,6,6,positive,,,1st
-Dribbles,4,3,positive,8.0,6.0,2nd
-Possession lost,80,75,negative,,,2nd
-Duels won,23,17,positive,,,2nd
-Aerials won,4,2,positive,,,2nd
+name,home,away,statisticsType,homeTotal,awayTotal,period,match_id
+Dribbles,7,13,positive,13.0,22.0,ALL,11352588
+Possession lost,144,147,negative,,,ALL,11352588
+Duels won,49,42,positive,,,ALL,11352588
+Aerials won,10,8,positive,,,ALL,11352588
+Dribbles,3,10,positive,5.0,16.0,1st,11352588
+Possession lost,64,72,negative,,,1st,11352588
+Duels won,26,25,positive,,,1st,11352588
+Aerials won,6,6,positive,,,1st,11352588
+Dribbles,4,3,positive,8.0,6.0,2nd,11352588
+Possession lost,80,75,negative,,,2nd,11352588
+Duels won,23,17,positive,,,2nd,11352588
+Aerials won,4,2,positive,,,2nd,11352588

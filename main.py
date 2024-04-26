@@ -12,6 +12,7 @@ from flask_cors import CORS
 app = Flask(__name__) 
 api = Api(app) 
 cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
   
 api.add_resource(matchController.getMatchID, '/matchid') 
 api.add_resource(playerstatsController.PlayerStats, '/playerstats/<matchid>')

@@ -1,0 +1,13 @@
+name,home,away,statisticsType,period,match_id
+Total shots,19,10,positive,ALL,11352588
+Shots on target,6,6,positive,ALL,11352588
+Shots off target,9,2,negative,ALL,11352588
+Blocked shots,4,2,negative,ALL,11352588
+Total shots,7,7,positive,1st,11352588
+Shots on target,1,4,positive,1st,11352588
+Shots off target,3,1,negative,1st,11352588
+Blocked shots,3,2,negative,1st,11352588
+Total shots,12,3,positive,2nd,11352588
+Shots on target,5,2,positive,2nd,11352588
+Shots off target,6,1,negative,2nd,11352588
+Blocked shots,1,0,negative,2nd,11352588

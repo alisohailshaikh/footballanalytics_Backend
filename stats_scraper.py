@@ -1,6 +1,7 @@
 import requests 
 import datetime
 import pandas as pd
+from sqlalchemy import create_engine
 
 class Stats_Finder:
     headers = []
@@ -94,23 +95,38 @@ class Stats_Finder:
 
         
         shots = dataframes_by_group['Shots']
+        shots['match_id'] = matchid
         expected = dataframes_by_group['Expected']
+        expected['match_id'] = matchid
         possession = dataframes_by_group['Possession']
+        possession['match_id'] = matchid
         tvdata = dataframes_by_group['TVData']
+        tvdata['match_id'] = matchid
         shotsextra = dataframes_by_group['Shots extra']
+        shotsextra['match_id'] = matchid
         passes = dataframes_by_group['Passes']
+        passes['match_id'] = matchid
         duels = dataframes_by_group['Duels']
+        duels['match_id'] = matchid
         defending = dataframes_by_group['Defending']
+        defending['match_id'] = matchid
         
         try:
-            shots.to_csv('stats/shots.csv', index = False)
-            expected.to_csv('stats/expected.csv', index = False)
-            possession.to_csv('stats/possession.csv', index = False)
-            tvdata.to_csv('stats/tvdata.csv', index = False)
-            shotsextra.to_csv('stats/shotsextra.csv', index = False)
-            passes.to_csv('stats/passes.csv', index = False)
-            duels.to_csv('stats/duels.csv', index = False)
-            defending.to_csv('stats/defending.csv', index = False)
+            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
+                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
+                    "Database=FootballAnalytics;"
+                    "Trusted_Connection=yes;")
+        
+            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
+
+            shots.to_sql(name='shotsmatch',con=engine,if_exists='replace')
+            expected.to_sql(name='expected',con=engine,if_exists='replace')
+            possession.to_sql(name='possession',con=engine,if_exists='replace')
+            tvdata.to_sql(name='tvdata',con=engine,if_exists='replace')
+            shotsextra.to_sql(name='shotsextra',con=engine,if_exists='replace')
+            passes.to_sql(name='passes',con=engine,if_exists='replace')
+            duels.to_sql(name='duels',con=engine,if_exists='replace')
+            defending.to_sql(name='defending',con=engine,if_exists='replace')
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")

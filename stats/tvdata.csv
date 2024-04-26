@@ -1,20 +1,20 @@
-name,home,away,statisticsType,period
-Corner kicks,7,4,positive,ALL
-Offsides,6,1,negative,ALL
-Fouls,6,10,negative,ALL
-Yellow cards,0,3,negative,ALL
-Free kicks,9,6,positive,ALL
-Throw-ins,17,19,positive,ALL
-Goal kicks,6,11,positive,ALL
-Corner kicks,0,4,positive,1st
-Offsides,5,1,negative,1st
-Yellow cards,0,1,negative,1st
-Free kicks,4,2,positive,1st
-Throw-ins,9,10,positive,1st
-Goal kicks,3,4,positive,1st
-Corner kicks,7,0,positive,2nd
-Offsides,1,0,negative,2nd
-Yellow cards,0,2,negative,2nd
-Free kicks,5,4,positive,2nd
-Throw-ins,8,9,positive,2nd
-Goal kicks,3,7,positive,2nd
+name,home,away,statisticsType,period,match_id
+Corner kicks,7,4,positive,ALL,11352588
+Offsides,6,1,negative,ALL,11352588
+Fouls,6,10,negative,ALL,11352588
+Yellow cards,0,3,negative,ALL,11352588
+Free kicks,9,6,positive,ALL,11352588
+Throw-ins,17,19,positive,ALL,11352588
+Goal kicks,6,11,positive,ALL,11352588
+Corner kicks,0,4,positive,1st,11352588
+Offsides,5,1,negative,1st,11352588
+Yellow cards,0,1,negative,1st,11352588
+Free kicks,4,2,positive,1st,11352588
+Throw-ins,9,10,positive,1st,11352588
+Goal kicks,3,4,positive,1st,11352588
+Corner kicks,7,0,positive,2nd,11352588
+Offsides,1,0,negative,2nd,11352588
+Yellow cards,0,2,negative,2nd,11352588
+Free kicks,5,4,positive,2nd,11352588
+Throw-ins,8,9,positive,2nd,11352588
+Goal kicks,3,7,positive,2nd,11352588

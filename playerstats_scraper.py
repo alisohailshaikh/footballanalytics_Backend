@@ -1,6 +1,7 @@
 import requests 
 import datetime
 import pandas as pd
+from sqlalchemy import create_engine
 
 class PlayerStats_Finder:
     headers = []
@@ -52,10 +53,22 @@ class PlayerStats_Finder:
 
         df.drop('ratingVersions', axis=1, inplace=True)
         df.drop('jerseyNumber', axis=1, inplace=True)
+
+        df['match_id'] = matchid
+
+        
+       
         
         
         try:
-            df.to_csv('https://khiibaedu-my.sharepoint.com/:x:/g/personal/a_shaikh_22788_khi_iba_edu_pk/EfZ83yWif0FGh1TYGeN8WLMByPBq6-MFY9ChMVhjs9Dg0A?e=CoQ8B5', index=False)
+            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
+                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
+                    "Database=FootballAnalytics;"
+                    "Trusted_Connection=yes;")
+        
+            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
+
+            df.to_sql(name='player_stats',con=engine,if_exists='replace')
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")
