@@ -23,11 +23,20 @@ class Users(Resource):
             return response
         
     def login(self):
+        load_dotenv()
+        username = os.environ['username']
+        password = os.environ['password'] 
+        server = os.environ['server']
+        database = os.environ['database'] 
+        driver = os.environ['driver']
 
-        cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
-                    "Database=FootballAnalytics;"
-                    "Trusted_Connection=yes;")
+        cxnstring = (f"Driver={driver};"
+                    f"Server={server};"
+                    f"Database={database};"
+                    f"UID={username};"
+                    f"PWD={password};")
+    
+        
         cxn = pyodbc.connect(cxnstring)
         cursor = cxn.cursor()
         
@@ -67,10 +76,18 @@ class Users(Resource):
     
     def register(self):
 
-        cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
-                    "Database=FootballAnalytics;"
-                    "Trusted_Connection=yes;")
+        load_dotenv()
+        username = os.environ['username']
+        password = os.environ['password'] 
+        server = os.environ['server']
+        database = os.environ['database'] 
+        driver = os.environ['driver']
+
+        cxnstring = (f"Driver={driver};"
+                    f"Server={server};"
+                    f"Database={database};"
+                    f"UID={username};"
+                    f"PWD={password};")
 
         cxn = pyodbc.connect(cxnstring)
         cursor = cxn.cursor()

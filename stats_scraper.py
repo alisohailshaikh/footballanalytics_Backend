@@ -2,6 +2,8 @@ import requests
 import datetime
 import pandas as pd
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 
 class Stats_Finder:
     headers = []
@@ -112,12 +114,18 @@ class Stats_Finder:
         defending['match_id'] = matchid
         
         try:
-            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "35.223.106.218;"
-                    "Database=footballanalytics;"
-                    "Trusted_Connection=yes;")
+            load_dotenv()
+            username = os.environ['username']
+            password = os.environ['password'] 
+            server = os.environ['server']
+            database = os.environ['database'] 
+            driver = os.environ['driver']
+
+
+            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+
+            engine = create_engine(conn_str)
         
-            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
 
             shots.to_sql(name='shotsmatch',con=engine,if_exists='replace')
             expected.to_sql(name='expected',con=engine,if_exists='replace')
