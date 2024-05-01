@@ -2,6 +2,9 @@ import requests
 import datetime
 import pandas as pd
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
+
 
 class PlayerStats_Finder:
     headers = []
@@ -61,12 +64,18 @@ class PlayerStats_Finder:
         
         
         try:
-            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
-                    "Database=FootballAnalytics;"
-                    "Trusted_Connection=yes;")
+            load_dotenv()
+            username = os.environ['username']
+            password = os.environ['password'] 
+            server = os.environ['server']
+            database = os.environ['database'] 
+            driver = os.environ['driver']
+
+
+            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+
+            engine = create_engine(conn_str)
         
-            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
 
             df.to_sql(name='player_stats',con=engine,if_exists='replace')
             msg = True

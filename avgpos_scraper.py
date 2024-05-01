@@ -1,8 +1,12 @@
 import requests 
 import datetime
 import pandas as pd
-import pyodbc
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
+
+
+
 
 class AvgPos_Finder:
     headers = []
@@ -32,15 +36,12 @@ class AvgPos_Finder:
             positions= response.json()
 
             for x in positions:
-                print(x)
                 if x=='home':
                     for y in positions[x]:
                         y['type']='home'
-                        print(y)
                 elif x=='away':
                     for y in positions[x]:
                         y['type']='away'
-                        print(y)
                 else:
                     for y in positions[x]:
                         y['type']='subs'
@@ -65,15 +66,18 @@ class AvgPos_Finder:
             df= df[df['type']!='subs']
 
             df['match_id'] = matchid
+            
+            load_dotenv()
+            username = os.environ['username']
+            password = os.environ['password'] 
+            server = os.environ['server']
+            database = os.environ['database'] 
+            driver = os.environ['driver']
 
-            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
-                    "Database=FootballAnalytics;"
-                    "Trusted_Connection=yes;")
-            cxn = pyodbc.connect(cxnstring)
-            cursor = cxn.cursor()
 
-            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
+            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+
+            engine = create_engine(conn_str)
 
             df.to_sql(name='avg_positions',con=engine,if_exists='replace')
 

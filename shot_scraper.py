@@ -3,6 +3,8 @@ import datetime
 import pandas as pd
 import math
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 
 class Shots_Finder:
     headers= []
@@ -57,12 +59,17 @@ class Shots_Finder:
         df['match_id'] = matchid
         
         try:
-            cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
-                    "Database=FootballAnalytics;"
-                    "Trusted_Connection=yes;")
-        
-            engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
+            load_dotenv()
+            username = os.environ['username']
+            password = os.environ['password'] 
+            server = os.environ['server']
+            database = os.environ['database'] 
+            driver = os.environ['driver']
+
+
+            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+
+            engine = create_engine(conn_str)
 
             df.to_sql(name='shots',con=engine,if_exists='replace')
             msg = True

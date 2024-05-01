@@ -113,8 +113,8 @@ class Stats_Finder:
         
         try:
             cxnstring = ("Driver={ODBC Driver 17 for SQL Server};"
-                    "Server=DESKTOP-PSGPR9D\\SQLEXPRESS;"
-                    "Database=FootballAnalytics;"
+                    "35.223.106.218;"
+                    "Database=footballanalytics;"
                     "Trusted_Connection=yes;")
         
             engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % cxnstring)
