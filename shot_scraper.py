@@ -48,7 +48,7 @@ class Shots_Finder:
         df['Minute'] = df['timeSeconds'].apply(lambda x: math.ceil(x/60))
         df.drop('timeSeconds', axis=1, inplace=True)
         df.drop('time', axis=1, inplace=True)
-        df.drop('addedTime', axis=1, inplace=True)
+        # df.drop('addedTime', axis=1, inplace=True)
         df.drop('reversedPeriodTime', axis=1, inplace=True)
         df.drop('reversedPeriodTimeSeconds', axis=1, inplace=True)
         df[['EndLocation']] = df['draw'].apply(lambda x: pd.Series({'end': x['end']}))
@@ -60,16 +60,15 @@ class Shots_Finder:
         
         try:
             load_dotenv()
-            username = os.environ['username']
-            password = os.environ['password'] 
-            server = os.environ['server']
-            database = os.environ['database'] 
-            driver = os.environ['driver']
+            username = os.environ['usernamemysql']
+            password = os.environ['passwordmysql'] 
+            server = os.environ['servermysql']
+            database = os.environ['databasemysql'] 
+            driver = os.environ['drivermysql']
 
 
-            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
-
-            engine = create_engine(conn_str)
+            conn_str = f'mysql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+            engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
 
             df.to_sql(name='shots',con=engine,if_exists='replace')
             msg = True

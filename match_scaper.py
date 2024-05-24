@@ -31,6 +31,7 @@ class MatchIDFinder:
         links = match_soup.find_all('link', href=True)
         for link in links:
             href = link['href']
+            print(href)
             if 'android-app://com.sofascore.results/https/www.sofascore.com/event/' in href:
                 last_part = href.split('/')[-1]
                 return last_part

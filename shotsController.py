@@ -11,7 +11,7 @@ class PlayerShots(Resource):
             playershotsobj = Shots_Finder()
             result = playershotsobj.find_Shots(matchid)
             if result:
-                 response = Response("CSV succesfully exported", status=200, content_type='text/plain')
+                 response = Response("CSV succesfully exported from shots", status=200, content_type='text/plain')
             else:
                 response = Response("No match ID found for search query", status=404, content_type='text/plain')
         else:

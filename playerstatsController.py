@@ -10,7 +10,7 @@ class PlayerStats(Resource):
             playerstatsobj = PlayerStats_Finder()
             result = playerstatsobj.find_playerstats(matchid)
             if result:
-                 response = Response("CSV succesfully exported", status=200, content_type='text/plain')
+                 response = Response("CSV succesfully exported from player stats", status=200, content_type='text/plain')
             else:
                  response = Response("Cannot write to csv", status=400, content_type='text/plain')
         else:

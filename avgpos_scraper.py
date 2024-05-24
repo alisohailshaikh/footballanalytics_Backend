@@ -68,16 +68,17 @@ class AvgPos_Finder:
             df['match_id'] = matchid
             
             load_dotenv()
-            username = os.environ['username']
-            password = os.environ['password'] 
-            server = os.environ['server']
-            database = os.environ['database'] 
-            driver = os.environ['driver']
+            username = os.environ['usernamemysql']
+            password = os.environ['passwordmysql'] 
+            server = os.environ['servermysql']
+            database = os.environ['databasemysql'] 
+            driver = os.environ['drivermysql']
 
 
-            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+            conn_str = f'mysql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+            engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
 
-            engine = create_engine(conn_str)
+            # engine = create_engine(conn_str)
 
             df.to_sql(name='avg_positions',con=engine,if_exists='replace')
 

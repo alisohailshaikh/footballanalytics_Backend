@@ -17,8 +17,8 @@ class getMatchID(Resource):
                 response.headers.add("Access-Control-Allow-Origin", "*")
                 return response
             else:
-                return jsonify({'error': 'Match ID not found for the given search query.'}), 404
+                return Response("Match id not found", status=404, content_type='text/plain')
         else:
-            return jsonify({'error': 'Invalid request body. Missing "search_query" field.'}), 400
+            return Response("wrong query", status=400, content_type='text/plain')
     
   

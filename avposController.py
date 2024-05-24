@@ -11,7 +11,7 @@ class PlayerAvgPos(Resource):
             obj = AvgPos_Finder()
             result = obj.find_avgpos(matchid)
             if result:
-                 response = Response("csv exported successfully", status=200, content_type='text/plain')
+                 response = Response("csv exported successfully from avg pos", status=200, content_type='text/plain')
             else:
                 return jsonify({'error': 'Match ID not found for the given search query.'}), 404
         else:
