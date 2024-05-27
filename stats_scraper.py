@@ -4,6 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
+import pyodbc
 
 class Stats_Finder:
     headers = []
@@ -61,58 +62,105 @@ class Stats_Finder:
             else:
                 dataframes_by_group[group_name] = df
 
-      
         dataframes_by_group['Shots'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
         dataframes_by_group['Shots'].reset_index(drop=True, inplace=True)
        
-        dataframes_by_group['Expected'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue', 'statisticsType'], inplace = True)
-        dataframes_by_group['Expected'].reset_index(drop=True, inplace=True)
+        df_Exp = dataframes_by_group['Match overview'][dataframes_by_group['Match overview']['name'].str.contains('Expected goals')]
+        df_Exp.reset_index(drop=True, inplace=True)
+        df_Exp.drop(columns = ['name', 'compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
      
-        dataframes_by_group['Possession']
-        dataframes_by_group['Possession'].drop(columns = ['name', 'compareCode', 'valueType', 'homeValue', 'awayValue', 'statisticsType'], inplace = True)
-        dataframes_by_group['Possession'].reset_index(drop=True, inplace=True)
-    
-        dataframes_by_group['TVData'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
-        dataframes_by_group['TVData'].reset_index(drop=True, inplace=True)
+        df_Pos = dataframes_by_group['Match overview'][dataframes_by_group['Match overview']['name'].str.contains('Ball possession')]
+        df_Pos.drop(columns = ['name', 'compareCode', 'valueType', 'homeValue', 'awayValue', 'statisticsType'], inplace = True)
+        df_Pos.reset_index(drop=True, inplace=True)
 
-        dataframes_by_group['Shots extra'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
-        dataframes_by_group['Shots extra'].reset_index(drop=True, inplace = True)   
+        dataframes_by_group['Match overview'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
 
-        dataframes_by_group['Passes'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue', 'statisticsType'], inplace = True)
+        df_tv=dataframes_by_group['Match overview']
+        df_tv = df_tv[(df_tv['name'] != 'Ball possession') & (df_tv['name'] != 'Expected goals')]
+        df_tv.reset_index(drop=True, inplace=True)
+
+        dataframes_by_group['Attack'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
+        dataframes_by_group['Attack'].reset_index(drop=True, inplace = True)   
+
+        dataframes_by_group['Passes'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
         dataframes_by_group['Passes'].reset_index(drop=True, inplace = True)    
 
         dataframes_by_group['Passes']['home'] = dataframes_by_group['Passes']['home'].str.split('/').str[0]
         dataframes_by_group['Passes']['away'] = dataframes_by_group['Passes']['away'].str.split('/').str[0]
 
+        #in home and away columns remove values after "/"
         dataframes_by_group['Passes']['home'] = dataframes_by_group['Passes']['home'].str.split('(').str[0]
         dataframes_by_group['Passes']['away'] = dataframes_by_group['Passes']['away'].str.split('(').str[0]
 
-        dataframes_by_group['Duels'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
+        
         dataframes_by_group['Duels']['home'] = dataframes_by_group['Duels']['home'].str.split('/').str[0]
         dataframes_by_group['Duels']['away'] = dataframes_by_group['Duels']['away'].str.split('/').str[0]
+
         dataframes_by_group['Duels'].reset_index(drop=True, inplace = True) 
 
-        dataframes_by_group['Defending'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue', 'statisticsType'], inplace = True)
-        dataframes_by_group['Defending'].reset_index(drop=True, inplace = True) 
+        df_Duels = dataframes_by_group['Duels'][dataframes_by_group['Duels']['name'] == 'Duels']
+        df_Duels.drop(columns = ['compareCode', 'valueType', 'home', 'away'], inplace = True)
+        df_Duels.reset_index(drop=True, inplace = True)
 
+        dataframes_by_group['Duels'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue'], inplace = True)
+        dataframes_by_group['Duels'].reset_index(drop=True, inplace = True) 
+        #remove rows where name = Duels
+        dataframes_by_group['Duels'] = dataframes_by_group['Duels'][dataframes_by_group['Duels']['name'] != 'Duels']
+     
+    
         
+
+        df_TacklesWon = dataframes_by_group['Defending'][dataframes_by_group['Defending']['name'] == 'Tackles won']
+
+        df_TacklesWon.drop(columns = ['compareCode', 'valueType', 'home', 'away'], inplace = True)
+        df_TacklesWon.reset_index(drop=True, inplace = True)
+
+        dataframes_by_group['Defending'] = dataframes_by_group['Defending'][dataframes_by_group['Defending']['name']!='Tackles won']
+        dataframes_by_group['Defending'].drop(columns = ['compareCode', 'valueType', 'homeValue', 'awayValue', 'statisticsType'], inplace = True)
+
+        dataframes_by_group['Defending'].reset_index(drop=True, inplace = True) 
+        #run this
+        dataframes_by_group['Defending'] = dataframes_by_group['Defending'][dataframes_by_group['Defending']['period'] != 'ALL']
+        df_TacklesWon = df_TacklesWon[df_TacklesWon['period'] != 'ALL']
+
+        df_Duels = df_Duels[df_Duels['period'] != 'ALL']
+
+
+
+
         shots = dataframes_by_group['Shots']
-        shots['match_id'] = matchid
-        expected = dataframes_by_group['Expected']
-        expected['match_id'] = matchid
-        possession = dataframes_by_group['Possession']
-        possession['match_id'] = matchid
-        tvdata = dataframes_by_group['TVData']
-        tvdata['match_id'] = matchid
-        shotsextra = dataframes_by_group['Shots extra']
-        shotsextra['match_id'] = matchid
         passes = dataframes_by_group['Passes']
-        passes['match_id'] = matchid
         duels = dataframes_by_group['Duels']
-        duels['match_id'] = matchid
         defending = dataframes_by_group['Defending']
-        defending['match_id'] = matchid
-        
+        shotsextra = dataframes_by_group['Attack']
+
+        frames = [shots, df_tv, shotsextra, passes, duels, defending]
+        totalstats = pd.concat(frames)
+
+        cards = totalstats[(totalstats['name'] == 'Fouls')]
+
+        totalstats = totalstats[(totalstats['period'] != 'ALL')]
+
+        if "Red cards" not in totalstats["name"].values:
+    # Create a row where name is 'Red Cards' and period is '1st' and '2nd' and all rest are 0, statistic type is negative
+            red_cards = pd.DataFrame({'name': ['Red cards'], 'home': [0], 'away': [0], 'period': ['1st'], 'statisticsType': ['negative']})
+            red_cards = pd.DataFrame({'name': ['Red cards'], 'home': [0], 'away': [0], 'period': ['2nd'], 'statisticsType': ['negative']})
+            totalstats = pd.concat([totalstats, red_cards], ignore_index=True)
+        # Check if "Red Cards" column already exists
+        if "Yellow cards" not in totalstats["name"].values:
+            # Create a row where name is 'Red Cards' and period is '1st' and '2nd' and all rest are 0, statistic type is negative
+            y_cards = pd.DataFrame({'name': ['Yellow cards'], 'home': [0], 'away': [0], 'period': ['1st'], 'statisticsType': ['negative']})
+            y_cards = pd.DataFrame({'name': ['Yellow cards'], 'home': [0], 'away': [0], 'period': ['2nd'], 'statisticsType': ['negative']})
+            totalstats = pd.concat([totalstats, y_cards], ignore_index=True)
+
+
+        df_Exp['matchid'] = matchid
+        df_Pos['matchid'] = matchid
+        totalstats['matchid'] = matchid
+        cards['matchid'] = matchid
+        df_TacklesWon['matchid'] = matchid
+        df_Duels['matchid'] = matchid
+
         try:
             load_dotenv()
             username = os.environ['usernamemysql']
@@ -121,19 +169,18 @@ class Stats_Finder:
             database = os.environ['databasemysql'] 
             driver = os.environ['drivermysql']
 
-
-            conn_str = f'mysql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
             engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
         
 
-            shots.to_sql(name='shotsmatch',con=engine,if_exists='replace')
-            expected.to_sql(name='expected',con=engine,if_exists='replace')
-            possession.to_sql(name='possession',con=engine,if_exists='replace')
-            tvdata.to_sql(name='tvdata',con=engine,if_exists='replace')
-            shotsextra.to_sql(name='shotsextra',con=engine,if_exists='replace')
-            passes.to_sql(name='passes',con=engine,if_exists='replace')
-            duels.to_sql(name='duels',con=engine,if_exists='replace')
-            defending.to_sql(name='defending',con=engine,if_exists='replace')
+            df_Exp.to_sql(name='expected',con=engine,if_exists='replace')
+            df_Pos.to_sql(name='possession',con=engine,if_exists='replace')
+            totalstats.to_sql(name='totalstats',con=engine,if_exists='replace')
+            cards.to_sql(name='cards',con=engine,if_exists='replace')
+            df_TacklesWon.to_sql(name='tackleswon_stats',con=engine,if_exists='replace')
+            df_Duels.to_sql(name='duels_stats',con=engine,if_exists='replace')
+
+            
+        
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")

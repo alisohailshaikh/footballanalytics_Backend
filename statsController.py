@@ -12,7 +12,7 @@ class Stats(Resource):
             result = obj.find_stats(matchid)
             if result:
                  response = Response("CSV succesfully exported from stats", status=200, content_type='text/plain')
-                 response.headers.add("Access-Control-Allow-Origin", "*")
+                #  response.headers.add("Access-Control-Allow-Origin", "*")
             else:
                 response = Response("No match ID found for search query", status=404, content_type='text/plain')
         else:

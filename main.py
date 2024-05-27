@@ -6,6 +6,7 @@ import shotsController
 import avposController
 import statsController
 import userController
+import overview_controller
 from flask_cors import CORS
 
 
@@ -21,6 +22,7 @@ api.add_resource(shotsController.PlayerShots, '/playershots/<matchid>')
 api.add_resource(avposController.PlayerAvgPos, '/avgpos/<matchid>')
 api.add_resource(statsController.Stats, '/stats/<matchid>')
 api.add_resource(userController.Users,'/users')
+api.add_resource(overview_controller.Overview,'/overview/<matchid>')
   
 
 if __name__ == '__main__': 

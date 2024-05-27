@@ -72,7 +72,7 @@ class PlayerStats_Finder:
             driver = os.environ['drivermysql']
 
 
-            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+            # conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
 
             engine = engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
         

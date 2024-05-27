@@ -1,0 +1,3 @@
+,name,position,jerseyNumber,isHome,shotType,situation,bodyPart,goalMouthLocation,xg,addedTime,incidentType,goalType,xgot,xCoord,yCoord,GoalMouthxCoord,GoalMouthyCoord,GoalMouthzCoord,BlockxCoord,BlockyCoord,Minute,EndLocxCoord,EndLocyCoord,match_id
+22,Vinícius Júnior,F,7,TRUE,goal,penalty,right-foot,low-right,0.7884,,shot,penalty,0.9644,10.88742505,50,0,89.88817487,7.6,,,18,7.933742677,0,11368670
+8,Lucas Vázquez,D,17,FALSE,goal,assisted,right-foot,low-right,0.179790094,,shot,regular,0.4224,14.2715835,87.44638444,0,25.81404705,17.7,,,73,9.744002985,0,11368670

@@ -4,6 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
+import pyodbc
 
 
 
@@ -62,6 +63,7 @@ class AvgPos_Finder:
             df.drop('isHome', axis=1, inplace=True)
             df.drop('incidentType', axis=1, inplace=True)
             df.drop(['PlayerInname', 'PlayerInposition', 'PlayerInjerseyNumber', 'PlayerOutname', 'PlayerOutposition', 'PlayerOutjerseyNumber'], axis=1, inplace=True)
+            # df.drop(['id','time','addedTime','injury','incidentClass','reversedPeriodTime'],axis=1,inplace=True)
             df= df.dropna(axis=1, how='all')
             df= df[df['type']!='subs']
 
@@ -74,17 +76,41 @@ class AvgPos_Finder:
             database = os.environ['databasemysql'] 
             driver = os.environ['drivermysql']
 
+            # username = os.environ['username']
+            # password = os.environ['password'] 
+            # server = os.environ['server']
+            # database = os.environ['database'] 
+            # driver = os.environ['driver']
 
-            conn_str = f'mysql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+
+
+            # conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
             engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
 
             # engine = create_engine(conn_str)
 
             df.to_sql(name='avg_positions',con=engine,if_exists='replace')
+            username = os.environ['username']
+            password = os.environ['password'] 
+            server = os.environ['server']
+            database = os.environ['database'] 
+            driver = os.environ['driver']  
+            cxnstring = (f"Driver={driver};"
+                        f"Server={server};"
+                        f"Database={database};"
+                        f"UID={username};"
+                        f"PWD={password};")
+
+            cxn = pyodbc.connect(cxnstring)
+            cursor = cxn.cursor()
+
+            sql = "insert into triggerforrefresh values ('pls','work','man')"
+            cursor.execute(sql)
+            cxn.commit()
 
 
             try:
-                # df.to_csv('avg_positions.csv', index=False)
+                #df.to_csv('avg_positions.csv', index=False)
                 msg = True
             except Exception as e:
                 print(f"Error occurred while writing to CSV: {e}")

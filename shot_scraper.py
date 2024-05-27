@@ -71,6 +71,7 @@ class Shots_Finder:
             engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
 
             df.to_sql(name='shots',con=engine,if_exists='replace')
+            df.to_csv('shots.csv')
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")
