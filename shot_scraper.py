@@ -74,24 +74,24 @@ class Shots_Finder:
             df.to_sql(name='shots',con=engine,if_exists='replace')
             df.to_csv('shots.csv')
 
-            username = os.environ['username']
-            password = os.environ['password'] 
-            server = os.environ['server']
-            database = os.environ['database'] 
-            driver = os.environ['driver']
+            # username = os.environ['username']
+            # password = os.environ['password'] 
+            # server = os.environ['server']
+            # database = os.environ['database'] 
+            # driver = os.environ['driver']
 
-            cxnstring = (f"Driver={driver};"
-                        f"Server={server};"
-                        f"Database={database};"
-                        f"UID={username};"
-                        f"PWD={password};")
+            # cxnstring = (f"Driver={driver};"
+            #             f"Server={server};"
+            #             f"Database={database};"
+            #             f"UID={username};"
+            #             f"PWD={password};")
 
-            cxn = pyodbc.connect(cxnstring)
-            cursor = cxn.cursor()
+            # cxn = pyodbc.connect(cxnstring)
+            # cursor = cxn.cursor()
 
-            sql = "insert into triggerforrefresh values ('pls','work','man')"
-            cursor.execute(sql)
-            cxn.commit()
+            # sql = "insert into triggerforrefresh values ('pls','work','man')"
+            # cursor.execute(sql)
+            # cxn.commit()
             
             msg = True
         except Exception as e:
