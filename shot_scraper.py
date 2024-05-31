@@ -5,6 +5,7 @@ import math
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
+import pyodbc
 
 class Shots_Finder:
     headers= []
@@ -72,6 +73,26 @@ class Shots_Finder:
 
             df.to_sql(name='shots',con=engine,if_exists='replace')
             df.to_csv('shots.csv')
+
+            username = os.environ['username']
+            password = os.environ['password'] 
+            server = os.environ['server']
+            database = os.environ['database'] 
+            driver = os.environ['driver']
+
+            cxnstring = (f"Driver={driver};"
+                        f"Server={server};"
+                        f"Database={database};"
+                        f"UID={username};"
+                        f"PWD={password};")
+
+            cxn = pyodbc.connect(cxnstring)
+            cursor = cxn.cursor()
+
+            sql = "insert into triggerforrefresh values ('pls','work','man')"
+            cursor.execute(sql)
+            cxn.commit()
+            
             msg = True
         except Exception as e:
             print(f"Error occurred while writing to CSV: {e}")
