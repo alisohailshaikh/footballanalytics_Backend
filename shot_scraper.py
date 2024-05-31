@@ -58,6 +58,7 @@ class Shots_Finder:
         df.drop('EndLocation', axis=1, inplace=True)
         
         df['match_id'] = matchid
+        df['addedTime'] = 1
         
         try:
             load_dotenv()
