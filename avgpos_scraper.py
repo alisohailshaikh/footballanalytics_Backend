@@ -70,43 +70,43 @@ class AvgPos_Finder:
             df['match_id'] = matchid
             
             load_dotenv()
-            username = os.environ['usernamemysql']
-            password = os.environ['passwordmysql'] 
-            server = os.environ['servermysql']
-            database = os.environ['databasemysql'] 
-            driver = os.environ['drivermysql']
+            # username = os.environ['usernamemysql']
+            # password = os.environ['passwordmysql'] 
+            # server = os.environ['servermysql']
+            # database = os.environ['databasemysql'] 
+            # driver = os.environ['drivermysql']
 
-            # username = os.environ['username']
-            # password = os.environ['password'] 
-            # server = os.environ['server']
-            # database = os.environ['database'] 
-            # driver = os.environ['driver']
-
-
-
-            # conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
-            engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
-
-            # engine = create_engine(conn_str)
-
-            df.to_sql(name='avg_positions',con=engine,if_exists='replace')
             username = os.environ['username']
             password = os.environ['password'] 
             server = os.environ['server']
             database = os.environ['database'] 
-            driver = os.environ['driver']  
-            cxnstring = (f"Driver={driver};"
-                        f"Server={server};"
-                        f"Database={database};"
-                        f"UID={username};"
-                        f"PWD={password};")
+            driver = os.environ['driver']
 
-            cxn = pyodbc.connect(cxnstring)
-            cursor = cxn.cursor()
 
-            sql = "insert into triggerforrefresh values ('pls','work','man')"
-            cursor.execute(sql)
-            cxn.commit()
+
+            conn_str = f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}'
+            # engine = create_engine(f'mysql+pymysql://{username}:{password}@{server}/{database}')
+
+            engine = create_engine(conn_str)
+
+            df.to_sql(name='avg_positions',con=engine,if_exists='replace')
+            # username = os.environ['username']
+            # password = os.environ['password'] 
+            # server = os.environ['server']
+            # database = os.environ['database'] 
+            # driver = os.environ['driver']  
+            # cxnstring = (f"Driver={driver};"
+            #             f"Server={server};"
+            #             f"Database={database};"
+            #             f"UID={username};"
+            #             f"PWD={password};")
+
+            # cxn = pyodbc.connect(cxnstring)
+            # cursor = cxn.cursor()
+
+            # sql = "insert into triggerforrefresh values ('pls','work','man')"
+            # cursor.execute(sql)
+            # cxn.commit()
 
 
             try:
