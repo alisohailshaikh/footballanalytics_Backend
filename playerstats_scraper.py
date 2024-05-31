@@ -58,6 +58,7 @@ class PlayerStats_Finder:
         df.drop('jerseyNumber', axis=1, inplace=True)
 
         df['match_id'] = matchid
+        df['captain'] = False
 
         
        
