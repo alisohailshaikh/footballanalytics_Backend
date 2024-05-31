@@ -84,12 +84,12 @@ class Overview_Finder:
                         f"UID={username};"
                         f"PWD={password};")
 
-            # cxn = pyodbc.connect(cxnstring)
-            # cursor = cxn.cursor()
+            cxn = pyodbc.connect(cxnstring)
+            cursor = cxn.cursor()
 
-            # sql = "insert into triggerforrefresh values ('pls','work','man')"
-            # cursor.execute(sql)
-            # cxn.commit()
+            sql = "insert into triggerforrefresh values ('pls','work','man')"
+            cursor.execute(sql)
+            cxn.commit()
             
 
 
